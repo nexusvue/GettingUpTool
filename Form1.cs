@@ -98,18 +98,10 @@ namespace GettingUpTool
         {
             //////////////////////////////////////////////////
             // Try to find the game path
-            RegistryKey rk = Registry.ClassesRoot;
-            RegistryKey sk1 = rk.OpenSubKey("TheCollective.Slayer\\DefaultIcon");
-
-            if (sk1 == null)
-            {
-                MessageBox.Show("Failed to auto-detect game path!");
-            }
-            else
-            {
+       
                 try
                 {
-                    _gamePath = Path.GetDirectoryName(Path.GetDirectoryName((string)sk1.GetValue(""))) + @"\engine";
+                    _gamePath = Path.GetDirectoryName(Path.GetDirectoryName(@"STEAMPATHHERE") + @"\engine");
                     ofd.InitialDirectory = _gamePath;
 
                     DirectoryInfo directoryInfo = new DirectoryInfo(_gamePath);
@@ -122,7 +114,7 @@ namespace GettingUpTool
                 {
                     MessageBox.Show("Exception encountered while reading the registry" + Environment.NewLine + ex.ToString());
                 }
-            }
+            
         }
 
         //////////////////////////////////////////////////
